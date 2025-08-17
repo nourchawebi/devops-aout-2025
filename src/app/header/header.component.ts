@@ -12,5 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     console.log("nour");
   }
-
+  test(n:any){
+    const p="aa";
+    return p;
+  }
 }
