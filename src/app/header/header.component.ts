@@ -13,11 +13,12 @@ export class HeaderComponent implements OnInit {
     console.log("nour");
   }
   test(n:any){
-    const p="aa";
-    return p;
+    return n;
   }
+
   test2(n:any){
     const p="aa";
     return p;
   }
+
 }
