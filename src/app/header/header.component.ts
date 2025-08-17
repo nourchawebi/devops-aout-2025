@@ -16,4 +16,9 @@ export class HeaderComponent implements OnInit {
     return n;
   }
 
+  test2(n:any){
+    const p="aa";
+    return p;
+  }
+
 }
