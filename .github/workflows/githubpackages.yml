@@ -16,10 +16,10 @@ jobs:
           images: |
             ghcr.io/nourchawebi/devops-aout-2025/astonvilla
           tags: |
-            type=ref,event=branch #seance3
-            type=red,event=pr #pr-2
-            type=semver,pattern={{version}}#1
-            type=semver,pattern={{major}}.{{minor}} #1.2.5
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
       - name: set up Qemu
         uses: docker/setup-qemu-action@v2
       - name: set up Docker Buildx
