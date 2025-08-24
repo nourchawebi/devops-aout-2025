@@ -14,7 +14,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/nourchawebi/devops-aout-2025/astonvilla
+            ghcr.io/nourchawebi/devops-aout-2025
           tags: |
             type=ref,event=branch
             type=ref,event=pr
