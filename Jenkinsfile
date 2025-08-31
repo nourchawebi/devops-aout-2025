@@ -25,6 +25,14 @@ steps{
 sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
 }
 }
+
+stage("owasp check scan"){
+steps{
+dependencyCheck additionalArguments: '' , odcInstallation: 'DP-CHECK'
+dependencyCheckPublisher  pattern; '**/dependency-check-report.xml'
+}
+}
+
 stage("push"){
 steps{
 sh "docker push nourchawebi/astonvillajenkins:1.1.${env.BUILD_NUMBER} "
