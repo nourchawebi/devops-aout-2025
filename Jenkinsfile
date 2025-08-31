@@ -1,12 +1,44 @@
 
-pipeline {
+pipeline{
+environment{
+DOCKERHUB_CREDENTIALS= credentials('docker')
+}
 agent any
 stages{
-stage('greeting'){
+stage("clean up"){
 steps{
-  sh 'echo "hello from github"'
+deleteDir()
 }
 }
+stage("checkout"){
+steps{
+git url :'https://github.com/nourchawebi/devops-aout-2025.git' , branch: 'seance4'
 }
-
 }
+stage("build docker image"){
+steps{
+sh "docker build  -t nourchawebi/astonvillajenkins:1.1.${env.BUILD_NUMBER}  . "
+}
+}
+stage("login to docker hub"){
+steps{
+sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+}
+}
+stage("push"){
+steps{
+sh "docker push nourchawebi/astonvillajenkins:1.1.${env.BUILD_NUMBER} "
+sh "docker image rm  nourchawebi/astonvillajenkins:1.1.${env.BUILD_NUMBER}"
+}}
+}
+}
+// pipeline {
+// agent any
+// stages{
+// stage('greeting'){
+// steps{
+//   sh 'echo "hello from github"'
+// }
+// }
+// }
+// }
